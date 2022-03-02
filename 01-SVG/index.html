@@ -45,8 +45,7 @@
          Q 90, 60 50, 90
          Q 10, 60 10, 30 z" />
 
-    <path fill="none" stroke="red" class="lettre-d" d="M 100 10 V 100" />
-    <path fill="none" stroke="red" class="lettre-d" d="M 100 10 C 150 20 150 100 100 100" />
+    <path fill="none" stroke="red" class="lettre-d" d="M 100 10 V 100 M 100 10 C 150 10 150 100 100 100" />
     <path fill="none" stroke="red" class="lettre-e" d="M 180 15 L 150 15 V 98 L 180 98" />
     <path fill="none" stroke="red" class="lettre-e" d="M 180 15 L 150 15 V 98 L 180 98" />
     <path fill="none" stroke="red" class="lettre-a" d="M 195 98 L 220 15 L 245 98" />
@@ -57,15 +56,29 @@
   <h1>Animer des formes</h1>
 
   <h2>On click</h2>
-  <svg id="monSVG">
-    <rect xmlns="http://www.w3.org/2000/svg" x="5" y="5" width="400" height="100" fill="red" onclick="alert('Tu as cliqué le rectangle rouge!')"/>
+  <svg>
+    <rect class="rectangle" x="5" y="5" width="400" height="100" />
   </svg>
 
   <h2>On hover</h2>
+  <svg class="donut">
+    <g transform="translate(50, 30)">
+      <circle class="trou-donut" cx="50" cy="50" r="60" stroke="black" fill="transparent"></circle>
+      <circle class="donut-plein" cx="50" cy="50" r="40" stroke="black" fill="transparent">
+    </g>
+  </svg>
 
   <h2>Prenez la première lettre de votre prénom que vous avez créée ci-dessus. Faite bouger une forme de votre choix le
     long de la lettre</h2>
-
+  <svg width="700" height="500">
+    <path fill="none" stroke="red" d="M 10 100 V 10 M 10 10 C 60 10 60 100 10 100" id="theMotionPath"/>
+    
+    <circle cx="" cy="" r="10" fill="purple">
+      <animateMotion dur="6s" repeatCount="indefinite">
+        <mpath xlink:href="#theMotionPath" />
+      </animateMotion>
+    </circle>
+  </svg>
 
 </body>
 
