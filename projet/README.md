@@ -5,6 +5,7 @@ Le projet compte comme **40%** de la note finale.
 ### Thématique (10%)
 
 ❗ Délai 11 mars 23h59 ❗
+
 * Choisissez un ou plusieurs jeux de données qui vous inspirent et qui feront partie de votre visualisation. Vous devrez raconter une histoire et les coups de cœur sont ceux qui marchent le mieux ! Voici quelques exemples de données ouvertes :
 
   * [opendata.swiss](https://opendata.swiss/fr/) - Données ouvertes suisses
