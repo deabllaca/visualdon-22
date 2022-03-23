@@ -83,11 +83,24 @@ group2.on("click", () => {
 
 
 //Création d'un groupe pour notre histogramme de rectangles selon les hauteurs ci-dessous
-const data = [20, 5, 25, 8, 15]
-
 const canvaRectangle = d3.select("body")
     .append("svg")
 
+const data = [20, 5, 25, 8, 15]
+
+canvaRectangle.data(data)
+.enter()
+.append('svg')
+.attr("height", function(h) { 
+    return h 
+})
+.attr("width", 30)
+.append("rect")
+.attr("width", 20)
+.attr("height", function(h) { 
+    return h 
+})
+.attr("fill", "#69b3a2");
 
 //     .append("g")
 //     .attr("class", "div-rect")
