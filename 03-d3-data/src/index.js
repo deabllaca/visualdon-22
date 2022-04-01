@@ -12,6 +12,7 @@ import { json } from 'd3-fetch'
 //     })
 
 
+
 Promise.all([ //Pour importer plusieurs datasets
     json('https://jsonplaceholder.typicode.com/posts'),
     json('https://jsonplaceholder.typicode.com/users')
