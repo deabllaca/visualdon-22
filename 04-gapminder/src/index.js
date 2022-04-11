@@ -100,7 +100,7 @@ population.forEach(pays => {
     if (pays[2021] > maxPop) {
         maxPop = pays[2021]
     }
-    if (population[0] == pays) { 
+    if (population[0] == pays) {
         minPop = pays[2021]
     } else if (pays[2021] < minPop) {
         minPop = pays[2021]
@@ -216,7 +216,64 @@ function strToInt(str) {
     return number
 }
 
+//---------------------------------------------------------------------------------------------
+//Partie 2
 
+let listCountries = []
+
+lifeExpectancy.forEach(row => {
+    let countryData = {};
+    countryData[row['country']] = row['2021']
+    listCountries.push(countryData)
+});
+console.log(listCountries);
+
+let margin2 = { top: 20, right: 20, bottom: 30, left: 50 },
+    width2 = 650 - margin.left - margin.right,
+    height2 = 2000 - margin.top - margin.bottom;
+
+let svg2 = d3.select("#graph")
+    .append("svg")
+    .attr("width", width + margin2.left + margin2.right)
+    .attr("height", height2 + margin2.top + margin2.bottom);
+
+// Map and projection
+let path = d3.geoPath();
+let projection = d3.geoMercator()
+    .scale(70)
+    .center([0, 20])
+    .translate([width / 2, height2 / 2]);
+
+// Data and color scale
+let data = new Map();
+let colorScale = d3.scaleThreshold()
+    .domain([50, 60, 70, 80, 90, 100])
+    .range(d3.schemeGreens[7]);
+
+d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson").then(function (d) {
+    // Draw the map
+    svg.append("g")
+        .selectAll("path")
+        .data(d.features)
+        .join("path")
+        // draw each country
+        .attr("d", d3.geoPath()
+            .projection(projection)
+        )
+        // set id
+        .attr("id", function (d) { return d.properties.name; })
+        .attr("fill", function (d) {
+            let number = 0;
+            listCountries.forEach(country => {
+                if (typeof country[this.id] != "undefined") {
+                    console.log(country[this.id]);
+                    number = country[this.id]
+                }
+            })
+            console.log(number);
+            return colorScale(number);
+        })
+})
 
 
 
